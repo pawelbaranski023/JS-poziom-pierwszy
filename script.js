@@ -1,4 +1,6 @@
 let ul;
+let newItemForm;
+
 let shoppingList = [
   "Mleko",
   "Jajka",
@@ -10,14 +12,21 @@ let shoppingList = [
 
 document.addEventListener("DOMContentLoaded", () => {
   ul = document.getElementById("shoppingList");
+  newItemForm = document.getElementById("newItemForm");
 
-  for (let shoppingProduct of shoppingList) {
-    addListItem(shoppingProduct);
+  newItemForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    console.log(event);
+  });
+
+  for (let shoppingItem of shoppingList) {
+    addListItem(shoppingItem);
   }
 });
 
-function addListItem(shoppingProduct) {
+function addListItem(shoppingItem) {
   let li = document.createElement("li");
-  li.innerText = shoppingProduct;
+  li.innerText = shoppingItem;
   ul.appendChild(li);
 }
