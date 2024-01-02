@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
   newItemForm.addEventListener("submit", (event) => {
     event.preventDefault();
 
-    console.log(event);
+    addListItem(event.target.elements[0].value);
   });
 
   for (let shoppingItem of shoppingList) {
