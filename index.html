@@ -14,18 +14,24 @@
   <body>
     <div class="container">
       <h1>Lista zakupów</h1>
-      <form id="newItemForm">
-        <!-- <label for="shoppingItem">Nazwa produktu:</label> -->
-        <input
-          placeholder="Podaj nazwę produktu"
-          type="text"
-          name="shoppingItem"
-          id="shoppingItem"
-        />
+      <div class="row">
+        <div class="col-4">
+          <form id="newItemForm">
+            <!-- <label for="shoppingItem">Nazwa produktu:</label> -->
+            <input
+              placeholder="Podaj nazwę produktu"
+              type="text"
+              name="shoppingItem"
+              id="shoppingItem"
+            />
 
-        <button class="btn btn-success" type="submit">DODAJ</button>
-      </form>
-      <ul id="shoppingList"></ul>
+            <button class="btn btn-success" type="submit">DODAJ</button>
+          </form>
+        </div>
+        <div class="col-8">
+          <ul id="shoppingList"></ul>
+        </div>
+      </div>
     </div>
 
     <script
