@@ -12,12 +12,23 @@ let shoppingList = [
 
 document.addEventListener("DOMContentLoaded", () => {
   ul = document.getElementById("shoppingList");
+  inputError = document.getElementById("inputError");
   newItemForm = document.getElementById("newItemForm");
 
   newItemForm.addEventListener("submit", (event) => {
     event.preventDefault();
+    let input = event.target.elements[0];
 
-    addListItem(event.target.elements[0].value);
+    if (input.value.length > 2 && !input.value.startsWith(" ")) {
+      addListItem(input.value);
+      input.value = "";
+
+      input.classList.remove("input-danger");
+      inputError.innerText = "";
+    } else {
+      inputError.innerText = "Nazwa nie spełnia kryteriow";
+      input.classList.add("input-danger");
+    }
   });
 
   for (let shoppingItem of shoppingList) {
