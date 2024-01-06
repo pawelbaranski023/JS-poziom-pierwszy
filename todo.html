@@ -29,36 +29,37 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
-            <a class="nav-link active" href="#"
-              >Shopping List <span class="sr-only">(current)</span></a
+            <a class="nav-link" href="index.html">Shopping List </a>
+            <a class="nav-link active"
+              >Todo<span class="sr-only">(current)</span></a
             >
-            <a class="nav-link" href="todo.html">Todo</a>
           </div>
         </div>
       </nav>
     </div>
 
     <div class="container list-wipper">
-      <h1>Lista zakupów</h1>
+      <h1>Todo list</h1>
       <div class="row">
         <div class="col-4">
-          <form id="newItemForm">
+          <form id="todoForm">
             <div class="form-grup">
-              <!-- <label for="shoppingItem">Nazwa produktu:</label> -->
-              <input
-                placeholder="Podaj nazwę produktu"
-                type="text"
-                name="shoppingItem"
-                id="shoppingItem"
-              />
-              <span class="input-info-danger" id="inputError"></span>
+              <label for="todoName">Nazwa zadania:</label>
+              <input type="text" name="todoName" id="todoName" />
+              <span class="input-info-danger" id="todoNameError"></span>
+            </div>
+
+            <div class="form-grup">
+              <label for="todoDesc">Opis:</label>
+              <input type="text" name="todoDesc" id="todoDesc" />
+              <span class="input-info-danger" id="todoDescError"></span>
             </div>
 
             <button class="btn btn-success" type="submit">DODAJ</button>
           </form>
         </div>
         <div class="col-8">
-          <ul id="shoppingList"></ul>
+          <ul id="todoList"></ul>
         </div>
       </div>
     </div>
@@ -78,6 +79,6 @@
       integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+"
       crossorigin="anonymous"
     ></script>
-    <script src="shoppingList.js"></script>
+    <script src="todo.js"></script>
   </body>
 </html>

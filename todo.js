@@ -1,5 +1,5 @@
 let ul;
-let newItemForm;
+let newTodoForm;
 
 let shoppingList = [
   "Mleko",
@@ -11,9 +11,8 @@ let shoppingList = [
 ];
 
 document.addEventListener("DOMContentLoaded", () => {
-  ul = document.getElementById("shoppingList");
-  inputError = document.getElementById("inputError");
-  newItemForm = document.getElementById("newItemForm");
+  ul = document.getElementById("todoList");
+  newTodoForm = document.getElementById("todoForm");
 
   newItemForm.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -24,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
       input.value = "";
 
       input.classList.remove("input-danger");
-      inputError.innerText = "";
+      inputError.innerText = " ";
     } else {
       inputError.innerText = "Nazwa nie spełnia kryteriow";
       input.classList.add("input-danger");
