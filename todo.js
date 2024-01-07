@@ -1,42 +1,26 @@
 let ul;
-let newTodoForm;
+let todoForm;
 
-let shoppingList = [
-  "Mleko",
-  "Jajka",
-  "Jogurt",
-  "Pasztet",
-  "Bułka",
-  "Ogórki kiszone",
-];
+let todoList = [];
 
 document.addEventListener("DOMContentLoaded", () => {
   ul = document.getElementById("todoList");
-  newTodoForm = document.getElementById("todoForm");
+  todoForm = document.getElementById("todoForm");
 
-  newItemForm.addEventListener("submit", (event) => {
+  todoForm.addEventListener("submit", (event) => {
     event.preventDefault();
-    let input = event.target.elements[0];
+    let todoName = event.target.elements[0];
+    let todoDesc = event.target.elements[1];
 
-    if (input.value.length > 2 && !input.value.startsWith(" ")) {
-      addListItem(input.value);
-      input.value = "";
+    if (todoName.value.length > 2 && todoDesc.value.length > 20) {
+      let todo = {
+        name: todoName.value,
+        desc: todoDesc.value,
+        done: false,
+      };
 
-      input.classList.remove("input-danger");
-      inputError.innerText = " ";
+      todoList.push(todo);
     } else {
-      inputError.innerText = "Nazwa nie spełnia kryteriow";
-      input.classList.add("input-danger");
     }
   });
-
-  for (let shoppingItem of shoppingList) {
-    addListItem(shoppingItem);
-  }
 });
-
-function addListItem(shoppingItem) {
-  let li = document.createElement("li");
-  li.innerText = shoppingItem;
-  ul.appendChild(li);
-}
