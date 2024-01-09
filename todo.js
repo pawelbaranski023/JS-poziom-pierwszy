@@ -14,14 +14,29 @@ document.addEventListener("DOMContentLoaded", () => {
     let todoName = event.target.elements[0];
     let todoDesc = event.target.elements[1];
 
-    if (todoName.value.length > 2 && todoDesc.value.length > 20) {
-      let todo = {
+    if (todoName.value.length > 2 && todoDesc.value.length > 10) {
+      let newTodo = {
         name: todoName.value,
         desc: todoDesc.value,
         done: false,
       };
 
-      todoList.push(todo);
+      for (let todo of todoList) {
+        if (todo.name === todoName.value && todo.desc === todoDesc.value) {
+          return;
+        }
+      }
+
+      todoList.push(newTodo);
+      console.log(todoList);
+
+      ul.innerHTML = "";
+
+      for (let todo of todoList) {
+        let li = document.createElement("li");
+        li.innerText = todo.name;
+        ul.appendChild(li);
+      }
     } else {
       if (todoName.value.length < 3) {
         todoName.classList.add("input-danger");
@@ -29,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       if (todoDesc.value.length < 20) {
         todoDesc.classList.add("input-danger");
-        todoDescError.innerText = "Opis jest za krótki !(min 20 znaków)";
+        todoDescError.innerText = "Opis jest za krótki !(min 10 znaków)";
       }
     }
 
@@ -38,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
       todoNameError.innerText = "";
     }
 
-    if (todoDesc.value.length > 20) {
+    if (todoDesc.value.length > 10) {
       todoDesc.classList.remove("input-danger");
       todoDescError.innerText = "";
     }
