@@ -1,3 +1,5 @@
+"use string";
+
 let ul;
 let todoForm;
 
@@ -6,8 +8,8 @@ let todoList = [];
 document.addEventListener("DOMContentLoaded", () => {
   ul = document.getElementById("todoList");
   todoForm = document.getElementById("todoForm");
-  todoNameError = document.getElementById("todoNameErrort");
-  todoDescError = document.getElementById("todoDescError");
+  let todoNameError = document.getElementById("todoNameErrort");
+  let todoDescError = document.getElementById("todoDescError");
 
   todoForm.addEventListener("submit", (event) => {
     event.preventDefault();
