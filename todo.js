@@ -32,13 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
       todoList.push(newTodo);
       console.log(todoList);
 
-      ul.innerHTML = "";
-
-      for (let todo of todoList) {
-        let li = document.createElement("li");
-        li.innerText = todo.name;
-        ul.appendChild(li);
-      }
+      renderList();
     } else {
       if (todoName.value.length < 3) {
         todoName.classList.add("input-danger");
@@ -61,3 +55,48 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+const renderList = () => {
+  ul.innerHTML = "";
+
+  todoList.forEach((todo, index) => {
+    let li = document.createElement("li");
+    li.classList.add(
+      "list-group-item",
+      "d-flex",
+      "justify-content-between",
+      "align-items-center"
+    );
+
+    let main = document.createElement("main");
+    let heading = document.createElement("h5");
+    let paragraph = document.createElement("p");
+    let button = document.createElement("button");
+
+    button.addEventListener("click", changeTaskStatus);
+    button.dataset.taskId = index;
+
+    if (!todo.done) {
+      button.innerText = "finish";
+      button.classList.add("btn", "btn-success", "btn-sm");
+    } else {
+      button.innerText = "revert";
+      button.classList.add("btn", "btn-danger", "btn-sm");
+      main.style.textDecoration = "line-through";
+    }
+
+    heading.innerText = todo.name;
+    paragraph.innerText = todo.desc;
+
+    main.appendChild(heading);
+    main.appendChild(paragraph);
+
+    li.appendChild(main);
+    li.appendChild(button);
+
+    ul.appendChild(li);
+  });
+};
+const changeTaskStatus = (event) => {
+  return;
+};
