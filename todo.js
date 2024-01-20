@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let todoName = event.target.elements[0];
     let todoDesc = event.target.elements[1];
 
-    if (todoName.value.length > 2 && todoDesc.value.length > 10) {
+    if (todoName.value.length > 2 && todoDesc.value.length > 9) {
       let newTodo = {
         name: todoName.value,
         desc: todoDesc.value,
@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
       todoNameError.innerText = "";
     }
 
-    if (todoDesc.value.length > 10) {
+    if (todoDesc.value.length > 9) {
       todoDesc.classList.remove("input-danger");
       todoDescError.innerText = "";
     }

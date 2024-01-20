@@ -43,19 +43,18 @@
       <div class="row">
         <div class="col-4">
           <form id="todoForm">
-            <div class="form-grup">
-              <label for="todoName">Nazwa zadania:</label>
-              <input type="text" name="todoName" id="todoName" />
-              <span class="input-info-danger" id="todoNameError"></span>
+            <div class="form-group">
+              <label for="todoName">Email address</label>
+              <input type="text" class="form-control" id="todoName" />
+              <small id="todoNameError" class="input-info-danger"></small>
+            </div>
+            <div class="form-group">
+              <label for="todoDesc">Password</label>
+              <textarea class="form-control" id="todoDesc"></textarea>
+              <small id="todoDescError" class="input-info-danger"></small>
             </div>
 
-            <div class="form-grup">
-              <label for="todoDesc">Opis:</label>
-              <input type="text" name="todoDesc" id="todoDesc" />
-              <span class="input-info-danger" id="todoDescError"></span>
-            </div>
-
-            <button class="btn btn-success" type="submit">DODAJ</button>
+            <button type="submit" class="btn btn-primary">ADD</button>
           </form>
         </div>
         <div class="col-8">
