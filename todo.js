@@ -8,7 +8,7 @@ let todoList = [];
 document.addEventListener("DOMContentLoaded", () => {
   ul = document.getElementById("todoList");
   todoForm = document.getElementById("todoForm");
-  let todoNameError = document.getElementById("todoNameErrort");
+  let todoNameError = document.getElementById("todoNameError");
   let todoDescError = document.getElementById("todoDescError");
 
   todoForm.addEventListener("submit", (event) => {
@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       if (todoDesc.value.length < 20) {
         todoDesc.classList.add("input-danger");
-        todoDescError.innerText = "Opis jest za krótki !(min 10 znaków)";
+        todoDescError.innerText = "Opis jest za krótki !(min 20 znaków)";
       }
     }
 
@@ -98,5 +98,14 @@ const renderList = () => {
   });
 };
 const changeTaskStatus = (event) => {
+  let todo = todoList[Math.round(event.target.dataset.taskId)];
+
+  if (todo.done === true) {
+    todo.done = false;
+  } else {
+    todo.done = true;
+  }
+
+  renderList();
   return;
 };
