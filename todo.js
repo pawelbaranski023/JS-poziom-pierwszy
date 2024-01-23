@@ -30,7 +30,9 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       todoList.push(newTodo);
-      console.log(todoList);
+
+      todoName.value = "";
+      todoDesc.value = "";
 
       renderList();
     } else {
@@ -57,6 +59,12 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 const renderList = () => {
+  let liList = Array.from(ul.getElementsByTagName("li"));
+
+  liList.forEach((li) => {
+    let button = li.getElementsByTagName("button")[0];
+    button.removeEventListener("click", changeTaskStatus);
+  });
   ul.innerHTML = "";
 
   todoList.forEach((todo, index) => {
