@@ -2,14 +2,14 @@
 
 let ul;
 let todoForm;
-
-let todoList = [];
+let todoList;
 
 document.addEventListener("DOMContentLoaded", () => {
   ul = document.getElementById("todoList");
   todoForm = document.getElementById("todoForm");
   let todoNameError = document.getElementById("todoNameError");
   let todoDescError = document.getElementById("todoDescError");
+  getTodoList();
 
   todoForm.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -30,6 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       todoList.push(newTodo);
+      localStorage.setItem("todoList", JSON.stringify(todoList));
 
       todoName.value = "";
       todoDesc.value = "";
@@ -116,4 +117,13 @@ const changeTaskStatus = (event) => {
 
   renderList();
   return;
+};
+
+const getTodoList = () => {
+  if (localStorage.getItem("todoList")) {
+    todoList = JSON.parse(localStorage.getItem("todoList"));
+    renderList();
+  } else {
+    todoList = [];
+  }
 };
