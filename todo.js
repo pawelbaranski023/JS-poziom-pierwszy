@@ -16,6 +16,16 @@ document.addEventListener("DOMContentLoaded", () => {
     let todoName = event.target.elements[0];
     let todoDesc = event.target.elements[1];
 
+    if (todoName.value.length > 2) {
+      todoName.classList.remove("input-danger");
+      todoNameError.innerText = "";
+    }
+
+    if (todoDesc.value.length > 20) {
+      todoDesc.classList.remove("input-danger");
+      todoDescError.innerText = "";
+    }
+
     if (todoName.value.length > 2 && todoDesc.value.length > 9) {
       let newTodo = {
         name: todoName.value,
@@ -37,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       renderList();
     } else {
-      if (todoName.value.length < 3) {
+      if (todoName.value.length < 2) {
         todoName.classList.add("input-danger");
         todoNameError.innerText = "Nazwa jest za krótka !(min 3 znaki)";
       }
@@ -45,16 +55,6 @@ document.addEventListener("DOMContentLoaded", () => {
         todoDesc.classList.add("input-danger");
         todoDescError.innerText = "Opis jest za krótki !(min 20 znaków)";
       }
-    }
-
-    if (todoName.value.length > 2) {
-      todoName.classList.remove("input-danger");
-      todoNameError.innerText = "";
-    }
-
-    if (todoDesc.value.length > 9) {
-      todoDesc.classList.remove("input-danger");
-      todoDescError.innerText = "";
     }
   });
 });
@@ -116,7 +116,7 @@ const changeTaskStatus = (event) => {
   }
 
   renderList();
-  return;
+  localStorage.setItem("todoList", JSON.stringify(todoList));
 };
 
 const getTodoList = () => {
